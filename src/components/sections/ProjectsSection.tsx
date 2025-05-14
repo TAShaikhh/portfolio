@@ -87,20 +87,6 @@ const projects: Project[] = [
     category: "Web App",
   },
   {
-    title: "OpportuNest",
-    description: "Developed Opportunest, a freelance marketplace tailored for university students, and successfully pitched a functional MVP in just 3 days.",
-    summary: "Built a freelance marketplace platform for university students.",
-    achievements: [
-      "Placed 3rd out of 200+ participants, including teams presenting graduate-level capstone and professional-track projects.",
-      "Earned recognition from judges and received an invitation from B.E.S.T. Labs to explore pilot implementation on campus.",
-    ],
-    technologies: ["React", "Node.js", "MongoDB", "Express"],
-    github: null,
-    demo: null,
-    year: "2024 - Present",
-    category: "Web App",
-  },
-  {
     title: "Automated Plant Watering System",
     description: "Developed a smart irrigation system with Arduino and C++ to monitor soil moisture and trigger water delivery, with Java-based UI for monitoring",
     summary: "Created a smart irrigation system with Arduino and Java UI.",
