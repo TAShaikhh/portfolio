@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Section from "../layout/Section";
-import Image from "next/image";
+import { GraduationCap } from "lucide-react";
 
 // Education data
 const education = [
@@ -10,14 +10,12 @@ const education = [
     duration: "In Progress",
     description:
       "Related Coursework: Data Structures & Algorithms, Computer Organization & Programming, Object-Oriented Programming, Statistics, Database Systems, Embedded Systems, Digital Logic Design, Software Development",
-    logo: "/images/companies/holy-heart.png",
   },
   {
     school: "Sir John A. Macdonald",
     degree: "High School Diploma, Information and Communication Technology",
     duration: "Sep 2017 - 2021",
     description: "Completed high school education with focus on Information and Communication Technology.",
-    logo: "/images/companies/global.png",
   },
 ];
 
@@ -28,22 +26,16 @@ export default function EducationSection() {
         {education.map((edu, index) => (
           <Card
             key={index}
-            className="bg-secondary/10 border border-secondary/20 hover:bg-secondary/20 transition-standard"
+            className="bg-secondary/20 border-0 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,166,237,0.2)] shadow-[0_0_15px_rgba(0,166,237,0.1)]"
           >
             <CardHeader className="p-4 sm:p-6">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="h-12 w-12 sm:h-16 sm:w-16 rounded flex items-center justify-center shrink-0 overflow-hidden bg-white p-1">
-                    <Image
-                      src={edu.logo}
-                      alt={edu.school}
-                      width={60}
-                      height={60}
-                      className="object-contain"
-                    />
+                  <div className="h-12 w-12 sm:h-16 sm:w-16 rounded-lg flex items-center justify-center shrink-0 bg-[#00A6ED]/20 shadow-[0_0_10px_rgba(0,166,237,0.2)] transition-transform duration-300 hover:scale-105">
+                    <GraduationCap className="h-8 w-8 text-[#00A6ED]" />
                   </div>
                   <div>
-                    <CardTitle className="text-lg sm:text-xl">{edu.school}</CardTitle>
+                    <CardTitle className="text-lg sm:text-xl text-[#00A6ED]">{edu.school}</CardTitle>
                     <CardDescription className="text-sm sm:text-base mt-1">
                       {edu.degree}
                     </CardDescription>

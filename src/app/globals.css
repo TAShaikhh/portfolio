@@ -150,3 +150,16 @@
     }
   }
 }
+
+@keyframes flow-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-flow-down {
+  animation: flow-down 3s linear infinite;
+}

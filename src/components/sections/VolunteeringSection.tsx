@@ -22,36 +22,22 @@ const volunteering = [
     ],
     logo: "LES", // Placeholder for organization logo
   },
-  {
-    role: "Peer Mentor",
-    organization: "Engineering Student Mentorship Program",
-    duration: "Oct 2023 - Present",
-    location: "York University, Toronto",
-    description:
-      "Provide guidance, academic support, and personal development advice to junior engineering students, helping them navigate university challenges and succeed in their academic journey.",
-    achievements: [
-      "Mentored 5 first-year students throughout their initial academic year",
-      "Created study resources that improved mentees' average grades by 15%",
-      "Conducted bi-weekly check-ins to provide continuous academic and personal support",
-    ],
-    logo: "MP", // Placeholder for organization logo
-  },
 ];
 
 export default function VolunteeringSection() {
   return (
     <Section id="volunteering" title="Volunteering">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="flex justify-center">
         {volunteering.map((volunteer, index) => (
-          <AnimatedCard key={index} delay={0.2 + index * 0.1}>
-            <Card className="bg-secondary/10 border border-secondary/20 hover:border-pink-500/20 h-full group hover:shadow-lg hover:shadow-pink-500/5 transition-all duration-300">
+          <AnimatedCard key={index} delay={0.2 + index * 0.1} className="w-full max-w-2xl">
+            <Card className="bg-secondary/20 border-0 transition-all duration-300 h-full hover:shadow-[0_0_20px_rgba(0,166,237,0.2)] hover:bg-secondary/30 shadow-[0_0_15px_rgba(0,166,237,0.1)]">
               <CardHeader className="p-4 sm:p-6">
                 <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-md bg-pink-500/10 border border-pink-500/20 flex items-center justify-center shrink-0 text-xl font-bold text-pink-400 group-hover:scale-110 transition-transform duration-300">
-                    <Heart className="h-6 w-6 text-pink-400" />
+                  <div className="h-12 w-12 rounded-full bg-[#00A6ED]/20 flex items-center justify-center shrink-0 text-[#00A6ED] group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,166,237,0.2)]">
+                    <Heart className="h-6 w-6" />
                   </div>
                   <div>
-                    <CardTitle className="text-lg sm:text-xl group-hover:text-pink-400 transition-colors duration-300">
+                    <CardTitle className="text-lg sm:text-xl text-[#00A6ED]">
                       {volunteer.role}
                     </CardTitle>
                     <CardDescription className="text-base mt-1 flex items-center">
@@ -81,7 +67,7 @@ export default function VolunteeringSection() {
 
                 {volunteer.achievements && (
                   <div className="mt-3 pt-3 border-t border-secondary/20">
-                    <h4 className="text-sm font-medium mb-2 text-pink-400">Key Contributions</h4>
+                    <h4 className="text-sm font-medium mb-2 text-foreground">Key Contributions</h4>
                     <ul className="space-y-1.5">
                       {volunteer.achievements.map((achievement, i) => (
                         <motion.li
@@ -92,7 +78,7 @@ export default function VolunteeringSection() {
                           transition={{ delay: 0.3 + i * 0.1 }}
                           viewport={{ once: true }}
                         >
-                          <span className="h-1.5 w-1.5 rounded-full bg-pink-500 mt-1.5 shrink-0"></span>
+                          <span className="h-1.5 w-1.5 rounded-full bg-foreground/50 mt-1.5 shrink-0"></span>
                           <span>{achievement}</span>
                         </motion.li>
                       ))}

@@ -16,7 +16,7 @@ const navItems = [
   { name: "Education", href: "#education" },
   { name: "Projects", href: "#projects" },
   { name: "Volunteering", href: "#volunteering" },
-  { name: "Honors", href: "#honors" },
+  { name: "Awards", href: "#honors" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -78,7 +78,7 @@ export default function Header() {
       <div className="container-custom flex items-center justify-between h-16 sm:h-20">
         <Link
           href="/#home"
-          className="flex items-center gap-2 font-bold text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500"
+          className="flex items-center gap-2 font-bold text-xl md:text-2xl text-white hover:text-white/90 transition-colors duration-300 [text-shadow:_0_0_15px_rgba(255,255,255,0.5)] hover:[text-shadow:_0_0_20px_rgba(255,255,255,0.7)]"
           onClick={(e) => handleLinkClick(e, "home")}
         >
           Umer Shaikh
@@ -89,7 +89,7 @@ export default function Header() {
           <ThemeToggle />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-1">
+          <nav className="hidden md:flex items-center justify-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -111,7 +111,6 @@ export default function Header() {
                     transition={{ type: "spring", duration: 0.6 }}
                   />
                 )}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
           </nav>

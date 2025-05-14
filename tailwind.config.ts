@@ -51,6 +51,15 @@ export default {
           '5': 'hsl(var(--chart-5))'
         }
       },
+      keyframes: {
+        'flow-down': {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' }
+        }
+      },
+      animation: {
+        'flow-down': 'flow-down 3s linear infinite'
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

@@ -39,65 +39,60 @@ const honors = [
 
 const colorMap = {
   amber: {
-    bg: "bg-amber-500/10",
-    border: "border-amber-500/20",
-    text: "text-amber-400",
-    hover: "group-hover:border-amber-500/50",
-    shadow: "group-hover:shadow-amber-500/10",
-    ring: "ring-amber-400/30",
-    deco: "bg-amber-500",
+    bg: "bg-[#00A6ED]/20",
+    border: "border-[#00A6ED]/20",
+    text: "text-[#00A6ED]",
+    hover: "group-hover:border-[#00A6ED]/50",
+    shadow: "group-hover:shadow-[#00A6ED]/10",
+    ring: "ring-[#00A6ED]/30",
+    deco: "bg-[#00A6ED]",
   },
   emerald: {
-    bg: "bg-emerald-500/10",
-    border: "border-emerald-500/20",
-    text: "text-emerald-400",
-    hover: "group-hover:border-emerald-500/50",
-    shadow: "group-hover:shadow-emerald-500/10",
-    ring: "ring-emerald-400/30",
-    deco: "bg-emerald-500",
+    bg: "bg-[#00A6ED]/20",
+    border: "border-[#00A6ED]/20",
+    text: "text-[#00A6ED]",
+    hover: "group-hover:border-[#00A6ED]/50",
+    shadow: "group-hover:shadow-[#00A6ED]/10",
+    ring: "ring-[#00A6ED]/30",
+    deco: "bg-[#00A6ED]",
   },
   blue: {
-    bg: "bg-blue-500/10",
-    border: "border-blue-500/20",
-    text: "text-blue-400",
-    hover: "group-hover:border-blue-500/50",
-    shadow: "group-hover:shadow-blue-500/10",
-    ring: "ring-blue-400/30",
-    deco: "bg-blue-500",
+    bg: "bg-teal-500/10",
+    border: "border-teal-500/20",
+    text: "text-teal-400",
+    hover: "group-hover:border-teal-500/50",
+    shadow: "group-hover:shadow-teal-500/10",
+    ring: "ring-teal-400/30",
+    deco: "bg-teal-500",
   },
   purple: {
-    bg: "bg-purple-500/10",
-    border: "border-purple-500/20",
-    text: "text-purple-400",
-    hover: "group-hover:border-purple-500/50",
-    shadow: "group-hover:shadow-purple-500/10",
-    ring: "ring-purple-400/30",
-    deco: "bg-purple-500",
+    bg: "bg-[#00A6ED]/20",
+    border: "border-[#00A6ED]/20",
+    text: "text-[#00A6ED]",
+    hover: "group-hover:border-[#00A6ED]/50",
+    shadow: "group-hover:shadow-[#00A6ED]/10",
+    ring: "ring-[#00A6ED]/30",
+    deco: "bg-[#00A6ED]",
   },
 };
 
 export default function HonorsSection() {
   return (
-    <Section id="honors" title="Honors & Awards">
+    <Section id="honors" title="Awards">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {honors.map((honor, index) => {
           const IconComponent = honor.icon === "trophy" ? Trophy : Award;
-          const colors = colorMap[honor.color as keyof typeof colorMap] || colorMap.amber;
 
           return (
             <AnimatedCard key={index} delay={0.2 + index * 0.1}>
-              <Card
-                className={`relative bg-secondary/10 border ${colors.border} transition-all duration-300 h-full hover:shadow-lg ${colors.shadow} ${colors.hover} group overflow-hidden`}
-              >
+              <Card className="relative bg-secondary/20 border-0 transition-all duration-300 h-full hover:shadow-[0_0_20px_rgba(0,166,237,0.2)] hover:bg-secondary/30 overflow-hidden shadow-[0_0_15px_rgba(0,166,237,0.1)]">
                 <CardHeader className="p-4 sm:p-6">
                   <div className="flex items-start gap-4">
-                    <div
-                      className={`h-12 w-12 rounded-full ${colors.bg} flex items-center justify-center shrink-0 border ${colors.border} group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <IconComponent className={`h-6 w-6 ${colors.text}`} />
+                    <div className="h-12 w-12 rounded-full bg-[#00A6ED]/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,166,237,0.2)]">
+                      <IconComponent className="h-6 w-6 text-[#00A6ED]" />
                     </div>
                     <div>
-                      <CardTitle className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${colors.text}`}>
+                      <CardTitle className="text-lg sm:text-xl font-semibold transition-colors duration-300 text-[#00A6ED]">
                         {honor.title}
                       </CardTitle>
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 text-xs text-muted-foreground">
@@ -122,9 +117,7 @@ export default function HonorsSection() {
                   >
                     {honor.description}
                   </motion.p>
-                  <div
-                    className={`pointer-events-none absolute bottom-0 right-0 w-20 h-20 rounded-tl-3xl overflow-hidden opacity-10 ${colors.deco}`}
-                  ></div>
+                  <div className="pointer-events-none absolute bottom-0 right-0 w-20 h-20 rounded-tl-3xl overflow-hidden opacity-5 bg-foreground"></div>
                 </CardContent>
               </Card>
             </AnimatedCard>

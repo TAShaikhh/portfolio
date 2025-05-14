@@ -10,7 +10,7 @@ export default function AboutSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-start">
         <AnimatedImage delay={0.3}>
           <div className="flex justify-center md:justify-start">
-            <div className="h-40 w-40 sm:h-60 sm:w-60 rounded-md border-3 sm:border-4 border-secondary shadow-xl overflow-hidden">
+            <div className="h-40 w-40 sm:h-60 sm:w-60 rounded-md border-3 sm:border-4 border-[#00A6ED]/30 shadow-[0_0_20px_rgba(0,166,237,0.2)] overflow-hidden">
               <img
                 src="/PFP.jpg"
                 alt="Umer Shaikh"
@@ -37,26 +37,26 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 sm:mt-8">
             <AnimatedText delay={0.6}>
               <div>
-                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4">Skills</h3>
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Skills</h3>
                 <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     JavaScript/TypeScript/React
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     Python, Java, C++
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     SQL, MongoDB, UI/UX Design
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     Embedded Systems, Digital Logic
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     Figma, Tableau, Git
                   </li>
                 </ul>
@@ -65,14 +65,14 @@ export default function AboutSection() {
 
             <AnimatedText delay={0.7}>
               <div>
-                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4">Education</h3>
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Education</h3>
                 <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     B.Eng. Software Engineering
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
                     Lassonde School of Engineering
                   </li>
                 </ul>

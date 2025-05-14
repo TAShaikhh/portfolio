@@ -22,11 +22,10 @@ export default function Section({ id, title, children, className }: SectionProps
       )}
     >
       <AnimatedSection className="container-custom" delay={0.1}>
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col items-center mb-10">
           <AnimatedText delay={0.2}>
-            <h2 className="text-2xl md:text-3xl font-medium tracking-tight">{title}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-center">{title}</h2>
           </AnimatedText>
-          <Separator className="flex-grow" />
         </div>
         {children}
       </AnimatedSection>
