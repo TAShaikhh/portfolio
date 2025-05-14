@@ -7,7 +7,7 @@ export default function ContactSection() {
     <Section id="contact" title="Get in touch">
       <div className="flex flex-col items-center max-w-lg mx-auto">
         <p className="text-muted-foreground text-center mb-8">
-          Have a question or want to work together? Feel free to reach out!
+        Open to new opportunities and conversations. Reach out anytime! 
         </p>
 
         <div className="space-y-6 w-full">
@@ -37,7 +37,7 @@ export default function ContactSection() {
             href="https://github.com/TAShaikhh"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 text-muted-foreground hover:text-teal-400 transition-standard group w-full bg-secondary/10 p-4 rounded-lg border border-secondary/20 hover:border-teal-500/20"
+            className="flex items-center gap-4 text-muted-foreground hover:text-[#00A6ED] transition-standard group w-full bg-secondary/10 p-4 rounded-lg border border-secondary/20 hover:border-[#00A6ED]/20"
           >
             <div className="h-10 w-10 rounded-full bg-secondary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Github className="h-5 w-5" />

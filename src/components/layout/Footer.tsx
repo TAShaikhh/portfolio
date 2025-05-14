@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container-custom">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0 text-center md:text-left">
-            <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-teal-400">Umer Shaikh</h4>
+            <h4 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-[#00A6ED]">Umer Shaikh</h4>
             <p className="text-sm sm:text-base text-muted-foreground">Software Engineering Student</p>
           </div>
 

@@ -71,12 +71,33 @@ const projects: Project[] = [
     category: "Hardware",
   },
   {
-    title: "OpportuNext",
-    description: "Created Opportunest, a freelance marketplace for university students, and pitched the Minimum Viable Product within 3 days for the B.E.S.T. Startup Experience.",
+    title: "Portfolio Website",
+    description: "Developed a modern, responsive portfolio website using Next.js and Tailwind CSS, featuring interactive sections, smooth animations, and a dark theme with consistent design patterns",
+    summary: "Created a personal portfolio with modern UI and smooth animations.",
+    achievements: [
+      "Implemented custom animations and transitions using Framer Motion for enhanced user experience and visual feedback",
+      "Designed a responsive layout with Tailwind CSS, ensuring optimal viewing across desktop, tablet, and mobile devices",
+      "Created reusable React components and custom hooks for maintainable and scalable code structure",
+      "Integrated dynamic content loading and optimized performance with Next.js server-side rendering"
+    ],
+    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    github: null,
+    demo: null,
+    year: "2023",
+    category: "Web App",
+  },
+  {
+    title: "OpportuNest",
+    description: "Developed Opportunest, a freelance marketplace tailored for university students, and successfully pitched a functional MVP in just 3 days.",
+    summary: "Built a freelance marketplace platform for university students.",
+    achievements: [
+      "Placed 3rd out of 200+ participants, including teams presenting graduate-level capstone and professional-track projects.",
+      "Earned recognition from judges and received an invitation from B.E.S.T. Labs to explore pilot implementation on campus.",
+    ],
     technologies: ["React", "Node.js", "MongoDB", "Express"],
     github: null,
     demo: null,
-    year: "2024",
+    year: "2024 - Present",
     category: "Web App",
   },
   {
@@ -89,7 +110,7 @@ const projects: Project[] = [
       "Integrated analog moisture sensors to continuously capture soil data and support automated decision-making"
     ],
     technologies: ["Java", "C++", "Arduino", "IoT"],
-    github: "https://github.com/TAShaikhh/PlantWatering",
+    github: null,
     demo: null,
     year: "2022",
     category: "IoT",
@@ -109,15 +130,6 @@ const projects: Project[] = [
     year: "2021",
     category: "Robotics",
   },
-  {
-    title: "Portfolio Website",
-    description: "A responsive, dark-themed personal portfolio website using Next.js and Tailwind CSS.",
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    github: null,
-    demo: null,
-    year: "2023",
-    category: "Web App",
-  },
 ];
 
 // Get all unique categories
@@ -125,11 +137,15 @@ const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
   const filteredProjects = activeCategory === "All"
     ? projects
     : projects.filter(p => p.category === activeCategory);
+
+  const toggleExpand = (index: number) => {
+    setExpandedProject(expandedProject === index ? null : index);
+  };
 
   return (
     <Section id="projects" title="Projects">
@@ -158,8 +174,8 @@ export default function ProjectsSection() {
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              onHoverStart={() => setHoveredProject(index)}
-              onHoverEnd={() => setHoveredProject(null)}
+              onClick={() => toggleExpand(index)}
+              className="cursor-pointer"
             >
               <Card className="bg-secondary/20 border-0 transition-all duration-300 h-full flex flex-col overflow-hidden hover:shadow-[0_0_20px_rgba(0,166,237,0.2)] hover:bg-secondary/30 shadow-[0_0_15px_rgba(0,166,237,0.1)]">
                 <div className="p-6 pb-4">
@@ -171,7 +187,7 @@ export default function ProjectsSection() {
                       <div className="flex items-center justify-between">
                         <h3 className="text-xl font-bold text-[#00A6ED]">{project.title}</h3>
                         <motion.div
-                          animate={{ rotate: hoveredProject === index ? 180 : 0 }}
+                          animate={{ rotate: expandedProject === index ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
                           className="text-muted-foreground"
                         >
@@ -198,7 +214,7 @@ export default function ProjectsSection() {
                   </p>
                   
                   <AnimatePresence>
-                    {hoveredProject === index && (
+                    {expandedProject === index && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}

@@ -35,7 +35,7 @@ const experiences = [
     title: "Software Engineering Intern",
     company: "Leivaire Inc.",
     location: "Toronto, ON",
-    duration: "Feb 2025 - Present",
+    duration: "Feb 2025 - May 2025",
     summary: "Built admin dashboard UI and backend services to boost efficiency.",
     description: "Developed detailed user stories and designed Figma UI prototypes for an internal admin dashboard, reducing average task completion time by 20% based on usability testing",
     achievements: [

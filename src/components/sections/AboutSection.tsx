@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function AboutSection() {
   return (
     <Section id="about" title="About Me">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-center">
         <AnimatedImage delay={0.3}>
           <div className="flex justify-center md:justify-start">
             <div className="h-40 w-40 sm:h-60 sm:w-60 rounded-md border-3 sm:border-4 border-[#00A6ED]/30 shadow-[0_0_20px_rgba(0,166,237,0.2)] overflow-hidden">
@@ -34,30 +34,30 @@ export default function AboutSection() {
             </p>
           </AnimatedText>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 sm:mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 sm:mt-8">
             <AnimatedText delay={0.6}>
               <div>
-                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Skills</h3>
-                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    JavaScript/TypeScript/React
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Programming Languages</h3>
+                <ul className="space-y-2.5 text-muted-foreground text-sm sm:text-base">
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Python, Java</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    Python, Java, C++
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>JavaScript, TypeScript</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    SQL, MongoDB, UI/UX Design
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>C++, HTML/CSS</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    Embedded Systems, Digital Logic
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>SQL, Assembly</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    Figma, Tableau, Git
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Verilog</span>
                   </li>
                 </ul>
               </div>
@@ -65,15 +65,55 @@ export default function AboutSection() {
 
             <AnimatedText delay={0.7}>
               <div>
-                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Education</h3>
-                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    B.Eng. Software Engineering
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Frameworks & Tools</h3>
+                <ul className="space-y-2.5 text-muted-foreground text-sm sm:text-base">
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>React, Node.js</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#00A6ED]"></span>
-                    Lassonde School of Engineering
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>MongoDB, Git</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Tableau, MS Excel</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>IntelliJ, Eclipse</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>AutoCAD (schematics)</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>PICBasic Pro (microcontroller programming)</span>
+                  </li>
+                </ul>
+              </div>
+            </AnimatedText>
+
+            <AnimatedText delay={0.8}>
+              <div>
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-[#00A6ED]">Interests</h3>
+                <ul className="space-y-2.5 text-muted-foreground text-sm sm:text-base">
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Web & Mobile Development</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Pitch Competitions & Startup Strategy</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Fitness & Personal Growth</span>
+                  </li>
+                  <li className="flex items-baseline gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00A6ED] mt-1.5 shrink-0"></div>
+                    <span>Investing & Financial Analytics</span>
                   </li>
                 </ul>
               </div>
