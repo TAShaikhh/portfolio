@@ -60,8 +60,6 @@ export default function HeroSection() {
                   2000,
                   'UI/UX Designer',
                   2000,
-                  'Full-Stack Developer',
-                  2000,
                 ]}
                 wrapper="span"
                 speed={50}
