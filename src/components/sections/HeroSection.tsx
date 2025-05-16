@@ -18,7 +18,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/lake-mountains.jpg"
-          alt="Mountain Lake Background"
+          alt=""
           fill
           className="object-cover opacity-30"
           priority
