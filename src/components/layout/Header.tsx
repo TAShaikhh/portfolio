@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { motion } from "framer-motion";
@@ -20,65 +20,115 @@ const navItems = [
   { name: "Contact", href: "#contact" },
 ];
 
+// Throttle function
+function throttle<T extends (...args: any[]) => void>(func: T, limit: number): T {
+  let inThrottle = false;
+  return ((...args: Parameters<T>) => {
+    if (!inThrottle) {
+      func(...args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }) as T;
+}
+
 export default function Header() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  let scrollTimeout: NodeJS.Timeout;
 
-  // Handle scroll and active section
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+  // Memoize scroll handler
+  const handleScroll = useCallback(throttle(() => {
+    // Add scrolling class to body during scroll
+    if (!isScrolling) {
+      setIsScrolling(true);
+      document.body.classList.add('is-scrolling');
+    }
 
-      // Find the active section
-      const sections = navItems.map((item) => item.href.substring(1));
+    // Clear previous timeout
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
 
-      // Find which section we're currently viewing
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveSection(sections[i]);
-            break;
+    // Remove scrolling class after scroll ends
+    scrollTimeout = setTimeout(() => {
+      setIsScrolling(false);
+      document.body.classList.remove('is-scrolling');
+    }, 150);
+
+    setIsScrolled(window.scrollY > 50);
+
+    // Use Intersection Observer API for better performance
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
           }
-        }
+        });
+      },
+      { 
+        threshold: 0.3,
+        rootMargin: '-20% 0px -20% 0px'
       }
+    );
+
+    // Observe all sections
+    navItems.forEach(item => {
+      const section = document.getElementById(item.href.substring(1));
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, 100), [isScrolling]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
+  }, [handleScroll]);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Handle smooth scrolling
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  // Handle smooth scrolling with improved performance
+  const handleLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.startsWith("#") ? href.substring(1) : href;
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80, // Adjust for header height
+      // Add scrolling class during programmatic scroll
+      document.body.classList.add('is-scrolling');
+      
+      targetElement.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
-
-      // Update active section
+      
+      // Remove scrolling class after animation
+      setTimeout(() => {
+        document.body.classList.remove('is-scrolling');
+      }, 1000);
+      
       setActiveSection(targetId);
     }
-  };
+  }, []);
 
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md border-b shadow-sm" : "bg-transparent"
+      transition={{ duration: 0.3 }}
+      className={`fixed top-0 w-full z-40 transition-transform duration-300 transform-gpu ${
+        isScrolled ? "bg-background/95 backdrop-blur-md border-b border-glow" : "bg-transparent"
       }`}
     >
       <div className="container-custom flex items-center justify-between h-16 sm:h-20">
         <Link
           href="/#home"
-          className="flex items-center gap-2 font-bold text-xl md:text-2xl text-white hover:text-white/90 transition-colors duration-300 [text-shadow:_0_0_15px_rgba(255,255,255,0.5)] hover:[text-shadow:_0_0_20px_rgba(255,255,255,0.7)]"
+          className="flex items-center gap-2 font-bold text-xl md:text-2xl text-[#00A6ED] hover:text-[#00A6ED]/90 transition-colors duration-300 text-glow"
           onClick={(e) => handleLinkClick(e, "home")}
         >
           Umer Shaikh
@@ -95,7 +145,9 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleLinkClick(e, item.href)}
-                className="group relative px-3 py-2 rounded-md text-sm transition-standard"
+                className={`group relative px-3 py-2 rounded-md text-sm transition-standard ${
+                  activeSection === item.href.substring(1) ? "text-glow" : ""
+                }`}
               >
                 <span className={`relative z-10 ${
                   activeSection === item.href.substring(1)
@@ -107,7 +159,7 @@ export default function Header() {
                 {activeSection === item.href.substring(1) && (
                   <motion.span
                     layoutId="activeNavItem"
-                    className="absolute inset-0 bg-secondary rounded-md z-0"
+                    className="absolute inset-0 bg-secondary rounded-md z-0 border-glow"
                     transition={{ type: "spring", duration: 0.6 }}
                   />
                 )}
@@ -116,25 +168,26 @@ export default function Header() {
           </nav>
 
           {/* Mobile Navigation */}
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" aria-label="Menu" className="h-10 w-10 rounded-full">
+              <Button variant="ghost" size="icon" aria-label="Menu" className="h-10 w-10 rounded-full button-glow">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-background">
-              <div className="flex flex-col space-y-4 mt-8">
+            <SheetContent side="right" className="w-[280px] sm:w-[320px] bg-background border-glow">
+              <SheetTitle className="text-lg font-semibold mb-4">Navigation Menu</SheetTitle>
+              <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={(e) => {
                       handleLinkClick(e, item.href);
-                      document.querySelector('[data-state="open"]')?.setAttribute('data-state', 'closed');
+                      setIsOpen(false);
                     }}
                     className={`px-4 py-3 rounded-md transition-standard text-base ${
                       activeSection === item.href.substring(1)
-                        ? "text-foreground bg-secondary"
+                        ? "text-foreground bg-secondary border-glow"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                     }`}
                   >

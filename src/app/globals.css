@@ -33,6 +33,15 @@
     --ring: 240 5.9% 10%;
 
     --radius: 0.5rem;
+
+    /* Mobile-first performance optimizations */
+    --transition-duration: 0.5s;
+    --transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Enhanced glow effects */
+    --glow-primary: rgba(0, 166, 237, 0.4);
+    --glow-secondary: rgba(0, 166, 237, 0.2);
+    --glow-hover: rgba(0, 166, 237, 0.5);
   }
 
   .dark {
@@ -64,6 +73,58 @@
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.9%;
   }
+
+  /* Optimize animations for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Mobile performance class */
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    perspective: 1000px;
+  }
+
+  /* Disable animations during scroll */
+  .is-scrolling * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    /* Simplify all animations */
+    *, ::before, ::after {
+      transition-duration: 0.15s !important;
+      transition-timing-function: linear !important;
+      animation-duration: 0.15s !important;
+    }
+
+    /* Prevent layout shifts */
+    .prevent-shift {
+      transform: translateZ(0);
+      will-change: opacity;
+      contain: content;
+    }
+
+    /* Optimize touch interactions */
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    /* Smooth image loading */
+    img {
+      content-visibility: auto;
+    }
+  }
 }
 
 @layer base {
@@ -72,6 +133,8 @@
   }
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   body {
     @apply bg-background text-foreground;
@@ -99,19 +162,90 @@
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-blue-600;
   }
 
-  /* Enhanced theme transition */
-  :root {
-    --transition-duration: 0.3s;
+  /* Optimize animations for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
-  html {
-    transition: color 0.3s ease, background-color 0.3s ease;
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translateZ(0);
   }
 
-  *, ::before, ::after {
-    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
-    transition-duration: var(--transition-duration);
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Mobile-optimized animations */
+  @media (max-width: 768px) {
+    .will-change-transform {
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* Reduce animation distance on mobile */
+    [data-animate="true"] {
+      transform: translateY(5px) !important;
+    }
+
+    /* Disable animations during scroll for better performance */
+    .is-scrolling * {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* Force hardware acceleration for smoother animations */
+    .animate-gpu {
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+  }
+
+  /* Optimize animation performance */
+  .animate-gpu {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Disable animations during scroll */
+  .is-scrolling {
+    pointer-events: none;
+  }
+
+  /* Smoother animations for transform */
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Only animate these properties when needed */
+  .animate-colors {
+    transition-property: color, background-color, border-color, box-shadow;
+  }
+
+  /* Optimize touch interactions */
+  @media (hover: none) {
+    * {
+      cursor: default !important;
+    }
+    
+    a, button {
+      cursor: pointer !important;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 }
 
@@ -137,10 +271,24 @@
 /* Transitions and animations */
 @layer utilities {
   .transition-standard {
-    @apply transition-all duration-300 ease-in-out;
+    @apply transition-opacity duration-150 ease-linear;
   }
-  .hover-lift {
-    @apply hover:-translate-y-1 transition-standard;
+
+  /* Simplified animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.15s linear forwards;
+  }
+
+  /* Remove flow-down animation on mobile */
+  @media (max-width: 768px) {
+    .animate-flow-down {
+      animation: none;
+    }
   }
 
   /* Mobile touch interactions */
@@ -162,4 +310,135 @@
 
 .animate-flow-down {
   animation: flow-down 3s linear infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.5s ease;
+}
+
+img.loading {
+  opacity: 0;
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .transform-gpu {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+  }
+  
+  /* Optimize touch interactions */
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* Card glow effects */
+.card-glow {
+  box-shadow: 0 0 45px var(--glow-secondary);
+  transition: box-shadow 0.3s ease;
+  border: none !important;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 60px var(--glow-primary);
+}
+
+/* Ambient glow */
+.ambient-glow {
+  position: relative;
+}
+
+.ambient-glow::before {
+  content: '';
+  position: absolute;
+  inset: -25px;
+  background: radial-gradient(
+    circle at center,
+    var(--glow-primary) 0%,
+    transparent 75%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.ambient-glow:hover::before {
+  opacity: 0.8;
+}
+
+/* Button glow */
+.button-glow {
+  box-shadow: 0 0 35px var(--glow-secondary);
+  transition: all 0.3s ease;
+  border: none !important;
+}
+
+.button-glow:hover {
+  box-shadow: 0 0 50px var(--glow-primary);
+  transform: translateY(-2px);
+}
+
+/* Icon glow */
+.icon-glow {
+  filter: drop-shadow(0 0 18px var(--glow-secondary));
+  transition: filter 0.3s ease;
+  border: none !important;
+}
+
+.icon-glow:hover {
+  filter: drop-shadow(0 0 30px var(--glow-primary));
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 30px var(--glow-secondary);
+  transition: text-shadow 0.3s ease;
+}
+
+.text-glow:hover {
+  text-shadow: 0 0 45px var(--glow-primary);
+}
+
+/* Timeline glow */
+.timeline-glow {
+  box-shadow: 0 0 35px var(--glow-secondary);
+  border: none !important;
+}
+
+/* Active element glow */
+.active-glow {
+  box-shadow: 0 0 55px var(--glow-primary);
+  border: none !important;
+}
+
+/* Remove borders but keep glow */
+.no-border {
+  border: none !important;
 }

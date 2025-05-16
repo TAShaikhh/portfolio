@@ -180,15 +180,15 @@ export default function ProjectsSection() {
                           <ChevronDown className="h-4 w-4" />
                         </motion.div>
                       </div>
-                      <div className="flex items-center text-xs text-muted-foreground mt-2 space-x-3">
-                        <span className="flex items-center">
-                          <Calendar className="mr-1 h-3.5 w-3.5" />
-                          {project.year}
-                        </span>
-                        <span className="flex items-center">
-                          <Lightbulb className="mr-1 h-3.5 w-3.5" />
-                          {project.category}
-                        </span>
+                      <div className="flex items-center text-xs mt-2 space-x-3">
+                      <span className="flex items-center text-foreground/70">
+                        <Calendar className="mr-1 h-3.5 w-3.5" />
+                        {project.year}
+                      </span>
+                      <span className="flex items-center font-semibold text-[#00A6ED]">
+                        <Lightbulb className="mr-1 h-3.5 w-3.5" />
+                        {project.category}
+                      </span>
                       </div>
                     </div>
                   </div>

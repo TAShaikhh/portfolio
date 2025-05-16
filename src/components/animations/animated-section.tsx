@@ -10,25 +10,43 @@ interface AnimatedSectionProps {
   delay?: number;
 }
 
+// Subtle animation config inspired by seanhalpin.xyz
+const fadeUpConfig = {
+  hidden: { 
+    opacity: 0,
+    y: 10
+  },
+  visible: { 
+    opacity: 1,
+    y: 0
+  },
+  transition: {
+    duration: 0.5,
+    ease: [0.22, 1, 0.36, 1]
+  }
+};
+
 export function AnimatedSection({
   children,
   className = "",
-  delay = 0.1
+  delay = 0
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { 
+    once: true,
+    margin: "-10% 0px" 
+  });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      initial={fadeUpConfig.hidden}
+      animate={isInView ? fadeUpConfig.visible : fadeUpConfig.hidden}
       transition={{
-        duration: 0.5,
-        delay: delay,
-        ease: [0.22, 1, 0.36, 1],
+        ...fadeUpConfig.transition,
+        delay
       }}
-      className={className}
+      className={`transform-gpu ${className}`}
     >
       {children}
     </motion.div>
@@ -38,22 +56,24 @@ export function AnimatedSection({
 export function AnimatedText({
   children,
   className = "",
-  delay = 0.1
+  delay = 0
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { 
+    once: true,
+    margin: "-10% 0px"
+  });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 10 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+      initial={fadeUpConfig.hidden}
+      animate={isInView ? fadeUpConfig.visible : fadeUpConfig.hidden}
       transition={{
-        duration: 0.4,
-        delay: delay,
-        ease: [0.22, 1, 0.36, 1],
+        ...fadeUpConfig.transition,
+        delay
       }}
-      className={className}
+      className={`transform-gpu ${className}`}
     >
       {children}
     </motion.div>
@@ -63,22 +83,24 @@ export function AnimatedText({
 export function AnimatedCard({
   children,
   className = "",
-  delay = 0.1
+  delay = 0
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { 
+    once: true,
+    margin: "-10% 0px"
+  });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.97, y: 20 }}
-      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.97, y: 20 }}
+      initial={fadeUpConfig.hidden}
+      animate={isInView ? fadeUpConfig.visible : fadeUpConfig.hidden}
       transition={{
-        duration: 0.5,
-        delay: delay,
-        ease: [0.22, 1, 0.36, 1],
+        ...fadeUpConfig.transition,
+        delay
       }}
-      className={className}
+      className={`transform-gpu ${className}`}
     >
       {children}
     </motion.div>
@@ -88,22 +110,24 @@ export function AnimatedCard({
 export function AnimatedImage({
   children,
   className = "",
-  delay = 0.1
+  delay = 0
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { 
+    once: true,
+    margin: "-10% 0px"
+  });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      initial={fadeUpConfig.hidden}
+      animate={isInView ? fadeUpConfig.visible : fadeUpConfig.hidden}
       transition={{
-        duration: 0.5,
-        delay: delay,
-        ease: [0.22, 1, 0.36, 1],
+        ...fadeUpConfig.transition,
+        delay
       }}
-      className={className}
+      className={`transform-gpu ${className}`}
     >
       {children}
     </motion.div>

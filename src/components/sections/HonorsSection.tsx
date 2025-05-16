@@ -99,16 +99,16 @@ export default function HonorsSection() {
                 className="cursor-pointer"
               >
                 <Card className="relative bg-secondary/20 border-0 transition-all duration-300 h-full hover:shadow-[0_0_20px_rgba(0,166,237,0.2)] hover:bg-secondary/30 overflow-hidden shadow-[0_0_15px_rgba(0,166,237,0.1)]">
-                  <CardHeader className="p-4 sm:p-6">
-                    <div className="flex items-start gap-4">
+                <CardHeader className="p-4 sm:p-6">
+                  <div className="flex items-start gap-4">
                       <div className="h-12 w-12 rounded-full bg-[#00A6ED]/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,166,237,0.2)]">
                         <IconComponent className="h-6 w-6 text-[#00A6ED]" />
-                      </div>
+                    </div>
                       <div className="flex-grow">
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-lg sm:text-xl font-semibold transition-colors duration-300 text-[#00A6ED]">
-                            {honor.title}
-                          </CardTitle>
+                        {honor.title}
+                      </CardTitle>
                           <motion.div
                             animate={{ rotate: expandedItem === index ? 180 : 0 }}
                             transition={{ duration: 0.3 }}
@@ -117,27 +117,27 @@ export default function HonorsSection() {
                             <ChevronDown className="h-4 w-4" />
                           </motion.div>
                         </div>
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 text-xs text-muted-foreground">
-                          <div className="flex items-center">
-                            <Building2 className="h-3.5 w-3.5 mr-1.5" />
-                            {honor.organization}
-                          </div>
-                          <div className="flex items-center">
-                            <Calendar className="h-3.5 w-3.5 mr-1.5" />
-                            {honor.date}
-                          </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 text-xs text-muted-foreground">
+                        <div className="flex items-center">
+                          <Building2 className="h-3.5 w-3.5 mr-1.5" />
+                          {honor.organization}
+                        </div>
+                        <div className="flex items-center">
+                          <Calendar className="h-3.5 w-3.5 mr-1.5" />
+                          {honor.date}
                         </div>
                       </div>
                     </div>
-                  </CardHeader>
-                  <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0">
+                  </div>
+                </CardHeader>
+                <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0">
                     <AnimatePresence>
                       {expandedItem === index && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
                           <div className="pt-2">
@@ -149,8 +149,8 @@ export default function HonorsSection() {
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </CardContent>
-                </Card>
+                </CardContent>
+              </Card>
               </motion.div>
             </AnimatedCard>
           );

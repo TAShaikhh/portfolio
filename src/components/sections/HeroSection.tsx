@@ -72,8 +72,8 @@ export default function HeroSection() {
 
           <AnimatedText delay={0.3}>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8">
-              I enjoy building minimalist, user-friendly digital experiences and finding creative ways to solve real problems.
-            </p>
+                I enjoy building minimalist, user-friendly digital experiences and finding creative ways to solve real problems.
+              </p>
           </AnimatedText>
 
           <AnimatedText delay={0.4}>
@@ -113,10 +113,10 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="w-full flex justify-center items-center pb-6 sm:pb-8 z-20">
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.6 }}
           onClick={() => {
             document.getElementById('about')?.scrollIntoView({ 
               behavior: 'smooth',
@@ -124,19 +124,18 @@ export default function HeroSection() {
             });
           }}
           className="cursor-pointer"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, repeatType: "loop" }}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, repeatType: "loop" }}
             className="flex flex-col items-center gap-2 hover:scale-110 transition-all duration-300"
-          >
+        >
             <span className="text-muted-foreground text-sm sm:text-base opacity-70 sm:opacity-80 hover:opacity-100">Scroll down</span>
-            <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 border-2 border-[#00A6ED]/30 rounded-full animate-ping"></div>
-              <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-[#00A6ED] z-10" />
-            </div>
-          </motion.div>
+          <div className="relative flex items-center justify-center">
+              <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-[#00A6ED] icon-glow z-10" />
+          </div>
         </motion.div>
+      </motion.div>
       </div>
     </section>
   );
