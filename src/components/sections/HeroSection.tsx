@@ -1,5 +1,7 @@
 "use client";
 
+import React from 'react';
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
@@ -77,14 +79,21 @@ export default function HeroSection() {
                 </Link>
               </Button>
               <Button
-                asChild
-                variant="outline"
-                className="h-10 sm:h-11 text-sm sm:text-base border-[#00A6ED]/20 hover:bg-[#00A6ED]/10 hover:border-[#00A6ED]/30 transition-all duration-300"
+ asChild
+ size="default"
+                className="h-10 sm:h-11 text-sm sm:text-base bg-[#00A6ED] hover:bg-[#00A6ED]/80 transition-all duration-300"
               >
-                <Link href="#projects">
-                  Projects
-                </Link>
+ <Link href="#projects">
+ Projects
+ </Link>
               </Button>
+ <Button
+                asChild
+                size="default"
+                className="h-10 sm:h-11 text-sm sm:text-base bg-[#00A6ED] hover:bg-[#00A6ED]/80 transition-all duration-300"
+              >
+ <Link href="#contact">Get in touch</Link>
+ </Button>
             </div>
           </AnimatedText>
 

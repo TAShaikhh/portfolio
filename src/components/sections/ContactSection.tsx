@@ -1,5 +1,5 @@
 import Section from "../layout/Section";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Calendar } from "lucide-react";
 import Link from "next/link";
 
 export default function ContactSection() {
@@ -11,8 +11,17 @@ export default function ContactSection() {
         </p>
 
         <div className="space-y-6 w-full">
+          <button
+            className="flex items-center gap-4 text-foreground hover:text-[#00A6ED] transition-standard group w-full bg-secondary/30 p-4 rounded-lg hover:bg-secondary/40 shadow-[0_0_15px_rgba(0,166,237,0.1)] hover:shadow-[0_0_25px_rgba(0,166,237,0.2)]"
+            onClick={() => { window.Calendly.initPopupWidget({ url: 'https://calendly.com/shaikh-usa786' }); return false; }}
+          >
+            <div className="h-10 w-10 rounded-full bg-[#00A6ED]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,166,237,0.2)]">
+              <Calendar className="h-5 w-5" />
+            </div>
+            <span>Schedule a Meeting</span>
+          </button>
           <a
-            href="mailto:shaikh.usa786@hotmail.com"
+            href="mailto:shaikh.usa786@hotmail.com" // <-- Keep this as an <a> tag for email
             className="flex items-center gap-4 text-foreground hover:text-[#00A6ED] transition-standard group w-full bg-secondary/30 p-4 rounded-lg hover:bg-secondary/40 shadow-[0_0_15px_rgba(0,166,237,0.1)] hover:shadow-[0_0_25px_rgba(0,166,237,0.2)]"
           >
             <div className="h-10 w-10 rounded-full bg-[#00A6ED]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-[0_0_10px_rgba(0,166,237,0.2)]">
