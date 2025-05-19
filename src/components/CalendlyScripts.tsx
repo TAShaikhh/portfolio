@@ -11,10 +11,15 @@ export default function CalendlyScripts() {
       if (window.Calendly) {
         window.Calendly.initBadgeWidget({
           url: 'https://calendly.com/shaikh-usa786',
-          text: 'Schedule time with me',
+          text: 'Schedule a call',
           color: '#00a6ed',
           textColor: '#ffffff',
-          branding: true,
+          branding: false,
+          position: 'bottom',
+          buttonStyle: 'floating',
+          buttonRounded: true,
+          buttonSize: 'compact',
+          opacity: 0.9,
         });
       }
     };
