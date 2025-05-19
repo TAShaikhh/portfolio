@@ -143,7 +143,7 @@ export default function ExperienceSection() {
                     <div className={`sm:w-1/2 ${isEven ? 'sm:pr-10 md:pr-16' : 'sm:pl-10 md:pl-16'}`}>
                       <Card 
                         className={`bg-secondary/20 border-0 transition-all duration-300 cursor-pointer h-full transform-gpu
-                          ${isExpanded ? 'shadow-[0_0_25px_rgba(0,166,237,0.2)]' : 'shadow-[0_0_15px_rgba(0,166,237,0.1)]'}
+ ${isExpanded ? 'shadow-[0_0_25px_rgba(0,166,237,0.25)]' : 'shadow-[0_0_15px_rgba(0,166,237,0.1)]'} hover:shadow-[0_0_20px_rgba(0,166,237,0.2)]
                           hover:bg-secondary/30 group overflow-hidden`}
                       >
                         <CardHeader className="p-4 sm:p-6">

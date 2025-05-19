@@ -81,11 +81,8 @@ export default function HeroSection() {
                 size="default"
                 className="h-10 sm:h-11 text-sm sm:text-base bg-[#00A6ED] hover:bg-[#00A6ED]/80 transition-all duration-300"
               >
-                <Link href="#about" onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  Learn more about me
+                <Link href="#experience">
+ Experience
                 </Link>
               </Button>
               <Button
@@ -93,11 +90,8 @@ export default function HeroSection() {
                 variant="outline"
                 className="h-10 sm:h-11 text-sm sm:text-base border-[#00A6ED]/20 hover:bg-[#00A6ED]/10 hover:border-[#00A6ED]/30 transition-all duration-300"
               >
-                <Link href="#contact" onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}>
-                  Get in touch
+                <Link href="#projects">
+                  Projects
                 </Link>
               </Button>
             </div>
@@ -109,13 +103,13 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+ {/* Scroll indicator */}
       <div className="w-full flex justify-center items-center pb-6 sm:pb-8 z-20">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.6 }}
-          onClick={() => {
+ onClick={() => {
             document.getElementById('about')?.scrollIntoView({ 
               behavior: 'smooth',
               block: 'start'

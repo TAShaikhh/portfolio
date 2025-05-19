@@ -80,7 +80,7 @@ const projects: Project[] = [
       "Created reusable React components and custom hooks for maintainable and scalable code structure",
       "Integrated dynamic content loading and optimized performance with Next.js server-side rendering"
     ],
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    technologies: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
     github: null,
     demo: null,
     year: "2023",
