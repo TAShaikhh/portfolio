@@ -15,16 +15,7 @@ export default function HeroSection() {
       className="min-h-[100svh] flex flex-col relative overflow-hidden"
     >
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/lake-mountains.jpg"
-          alt=""
-          fill
-          className="object-cover opacity-30"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/95 z-10"></div>
-      </div>
+ <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-background/95 z-10"></div>
 
       {/* Animated Particles (simplified with CSS) */}
       <div className="absolute inset-0 z-0">
@@ -75,7 +66,7 @@ export default function HeroSection() {
           </AnimatedText>
 
           <AnimatedText delay={0.4}>
-            <div className="flex flex-wrap gap-3 sm:gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4 relative">
               <Button
                 asChild
                 size="default"
@@ -99,7 +90,7 @@ export default function HeroSection() {
 
           {/* Floating elements */}
           <div className="absolute -top-10 right-0 w-64 h-64 bg-[#00A6ED]/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 -left-10 w-72 h-72 bg-[#00A6ED]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 -left-10 w-72 h-72 bg-[#00A6ED]/5 rounded-full blur-3xl pointer-events-none"></div>
         </motion.div>
       </div>
 
