@@ -11,7 +11,7 @@ import { useState, useCallback } from "react";
 const experiences = [
   {
     title: "Software Engineering Intern",
-    company: "U'Thumim Diagnostics",
+    company: "Cellmolecules Scientific Canada",
     location: "Saskatoon, SK",
     duration: "May 2025 - Present",
     summary: "Supporting full-stack web development for diagnostic tools.",
@@ -33,7 +33,7 @@ const experiences = [
   },
   {
     title: "Software Engineering Intern",
-    company: "Leivaire Inc.",
+    company: "Tweeba",
     location: "Toronto, ON",
     duration: "Feb 2025 - May 2025",
     summary: "Built admin dashboard UI and backend services to boost efficiency.",
