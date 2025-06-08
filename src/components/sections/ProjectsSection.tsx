@@ -83,7 +83,7 @@ const projects: Project[] = [
     technologies: ["Next.js", "React", "Tailwind CSS", "JavaScript"],
     github: null,
     demo: null,
-    year: "2023",
+    year: "2024-2025",
     category: "Web App",
   },
   {
